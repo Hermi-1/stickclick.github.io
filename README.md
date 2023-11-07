@@ -1,1 +1,0 @@
-# stickclick.io
