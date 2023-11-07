@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stick Clicker</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stick Clicker</h1>
+    <p>Sticks: <span id="stickCount">0</span></p>
+    <button onclick="clickStick()">Click</button>
+    <button onclick="saveGame()">Save Game</button>
+    <button onclick="loadGame()">Load Game</button>
+
+    <script>
+        let sticks = 0;
+
+        // Function to increment the stick count
+        function clickStick() {
+            sticks++;
+            document.getElementById('stickCount').textContent = sticks;
+        }
+
+        // Function to save the game state
+        function saveGame() {
+            localStorage.setItem('stickClicker', JSON.stringify(sticks));
+            alert('Game saved!');
+        }
+
+        // Function to load the game state
+        function loadGame() {
+            const savedData = localStorage.getItem('stickClicker');
+            if (savedData) {
+                sticks = JSON.parse(savedData);
+                document.getElementById('stickCount').textContent = sticks;
+                alert('Game loaded!');
+            } else {
+                alert('No saved game data found.');
+            }
+        }
+
+        // Load the initial game state
+        loadGame();
+    </script>
+</body>
+</html>
